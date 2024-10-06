@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ promo_code_form.as_p }}
+    <button type="submit">Оформить заказ</button>
+</form>
+     <p><form action="{% url 'cart_detail' %}" method="get">
+    <button type="submit">Вернуться к корзине</button>
+    </form></p>
+
+{% if applied_promo_code %}
+    <p>Applied promo code: {{ applied_promo_code.code }} with {{ applied_promo_code.discount }}% discount</p>
+    
+    <h3>Order Confirmation</h3>
+    <p>Thank you for your purchase!</p>
+      <p>
+    <form action="{% url 'products' %}" method="get">
+      <button type="submit" class="btn btn-primary">Продолжить покупки</button>
+    </form> </p>
+{% endif %}
+
+<h3>Cart Summary</h3>
+<ul>
+    {% for item in cart_summary %}
+        <li>{{ item.product.name }} x {{ item.quantity }} = {{ item.total_cost }}</li>
+    {% endfor %}
+</ul>
+<p>Total cost: {{ total_cost }}</p>
+{% endblock %}
