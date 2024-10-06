@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Labs.MainPage">
+
+    <Grid
+        Padding="5"
+        ColumnSpacing="1"
+        RowSpacing="1"
+        BackgroundColor="White"
+        RowDefinitions="2*,*,*,*,*,*,*">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Entry 
+           x:Name="result"
+           Grid.Row="0"
+           Grid.ColumnSpan="4"
+           TextColor="Black"
+           Text="0"
+           FontSize="110"
+           FontAttributes="Bold"
+           VerticalTextAlignment="Center"
+           HorizontalTextAlignment="End"
+           Margin="10"
+           IsReadOnly="True"
+           BackgroundColor="Transparent"
+       />
+
+        <!--Верхние 2 ряда-->
+        <Button 
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnPercent"
+            Text="%" />
+        <Button 
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="onOperatorSelection"
+            Text="^" />
+        <Button 
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnClear"
+            Text="C" />
+        <Button 
+            Grid.Row="1"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="50"
+            Clicked="OnBackspace"
+            Text="←" />
+        <Button 
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnReverse"
+            Text="1/x" />
+        <Button 
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnSquarePower"
+            Text="x²" />
+        <Button 
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnSquareRoot"
+            Text="√x" />
+        <Button 
+            Grid.Row="2"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="30"
+            Clicked="onOperatorSelection"
+            Text="÷" />
+        <!--Столбец справа-->
+        <Button 
+            Grid.Row="3"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="onOperatorSelection"
+            Text="×" />
+        <Button 
+            Grid.Row="4"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="onOperatorSelection"
+            Text="—" />
+        <Button 
+            Grid.Row="5"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="onOperatorSelection"
+            Text="+" />
+        <Button 
+            Grid.Row="6"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            BackgroundColor="Grey"
+            TextColor="White"
+            FontSize="30"
+            Clicked="OnEquals"
+            Text="=" />
+        <!--Числа-->
+        <Button 
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="7" />
+        <Button 
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="8" />
+        <Button 
+            Grid.Row="3"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="9" />
+        <Button 
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="4" />
+        <Button 
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="5" />
+        <Button 
+            Grid.Row="4"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="6" />
+        <Button 
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="1" />
+        <Button 
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="2" />
+        <Button 
+            Grid.Row="5"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="3" />
+        <Button 
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnPlusMinus"
+            Text="±" />
+        <Button 
+            Grid.Row="6"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnNumber"
+            Text="0" />
+        <Button 
+            Grid.Row="6"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            BackgroundColor="White"
+            TextColor="Black"
+            FontSize="25"
+            Clicked="OnComma"
+            Text="," />
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_253503_Ankuda.UI.Pages.TeamsPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="TeamsPage"
+             xmlns:models="clr-namespace:_253503_Ankuda.UI.ViewModels"
+             x:DataType="models:TeamsViewModel"
+             xmlns:entities="clr-namespace:_253503_Ankuda.Domain.Entities;assembly=253503_Ankuda.Domain"
+             xmlns:converters="clr-namespace:_253503_Ankuda.UI.ValueConverters"
+             >
+    <ContentPage.Resources>
+        <converters:ScoreToColorValueConverter x:Key="PercentageToColorConverter" />
+        <converters:ImageIdToImageSourceConverter x:Key="ImageIdToImageSourceConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Loaded"
+            Command="{Binding UpdateTeamsListCommand}"/>
+    </ContentPage.Behaviors>
+    <VerticalStackLayout>
+        <Picker ItemsSource="{Binding Teams}"
+                SelectedItem="{Binding SelectedTeam}">
+            <Picker.Behaviors>
+                <toolkit:EventToCommandBehavior 
+                    EventName="SelectedIndexChanged"
+                    Command="{Binding UpdateCompetitorsListCommand}"/>
+            </Picker.Behaviors>
+            <Picker.ItemDisplayBinding>
+                <Binding Path="Name" />
+            </Picker.ItemDisplayBinding>
+        </Picker>
+        <HorizontalStackLayout  Margin="10">
+            <Label Text="Team Name: "/>
+            <Label Text="{Binding SelectedTeam.Name}" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout  Margin="10">
+            <Label Text="Team Creator: "/>
+            <Label Text="{Binding SelectedTeam.Creator}"/>
+        </HorizontalStackLayout>
+
+        <CollectionView ItemsSource="{Binding Competitors}"  >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="entities:CompetitorEntity">
+                    
+                    <Frame BackgroundColor="Gray" Margin="10" CornerRadius="6" >
+                        <HorizontalStackLayout>
+                            <HorizontalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type models:TeamsViewModel}}, Path=ShowDetailsCommand}"
+                      CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout.GestureRecognizers>
+                            <Image Source="{Binding Id, Converter={StaticResource ImageIdToImageSourceConverter}}" HeightRequest="100" WidthRequest="50"/>
+                            <Label Text="{Binding Name}"
+                               Margin="5"
+                               TextColor="{Binding Score, Converter={StaticResource ScoreToColorConverter}}"
+                               VerticalOptions="Center"/>
+                            <Label Text="{Binding Score}"
+                               TextColor="{Binding Score, Converter={StaticResource ScoreToColorConverter}}"
+                               VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

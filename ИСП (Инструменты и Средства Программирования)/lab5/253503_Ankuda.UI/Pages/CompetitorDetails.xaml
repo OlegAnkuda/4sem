@@ -1,0 +1,46 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_253503_Ankuda.UI.Pages.CompetitorDetails"
+             xmlns:entities="clr-namespace:_253503_Ankuda.Domain.Entities;assembly=253503_Ankuda.Domain"
+             Title="CompetitorDetails"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:_253503_Ankuda.UI.ViewModels"
+             xmlns:converters="clr-namespace:_253503_Ankuda.UI.ValueConverters"
+             x:DataType="models:CompetitorDetailsViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageIdToImageSourceConverter x:Key="ImageIdToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior x:DataType="models:CompetitorDetailsViewModel" EventName="Loaded"
+            Command="{Binding UpdateCompetitorDetailsCommand}"/>
+    </ContentPage.Behaviors>
+    <VerticalStackLayout x:DataType="models:CompetitorDetailsViewModel" HorizontalOptions="Center">
+        <Image Source="{Binding Competitor.Id, Converter={StaticResource ImageIdToImageSourceConverter}}" HeightRequest="200" WidthRequest="200"/>
+        <Label Text="{Binding Competitor.Name}" FontSize="40" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <Label Text="{Binding Competitor.Description}" FontSize="20" HorizontalTextAlignment="Center"/>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="{Binding Competitor.Score}" FontSize="20" />
+            <Label Text="%" FontSize="20"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <VerticalStackLayout>
+                <Entry Text="{Binding NewName}"/>
+                <Button Text="Change name" Command="{Binding NameChangeButtonClickedCommand}"/>
+                <Label Text="{Binding NotifyNameString}" TextColor="{Binding NotifyNameStringColor}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Entry Text="{Binding NewDescription}" />
+                <Button Text="Change description" Command="{Binding DescriptionChangeButtonClickedCommand}"/>
+                <Label Text="{Binding NotifyDescriptionString}" TextColor="{Binding NotifyDescriptionStringColor}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Entry Text="{Binding NewScore}"/>
+                <Button Text="Change score" Command="{Binding ScoreChangeButtonClickedCommand}"/>
+                <Label Text="{Binding NotifyScoreString}" TextColor="{Binding NotifyScoreStringColor}"/>
+            </VerticalStackLayout>
+            <Button Text="Change image" Command="{Binding ImageChangeButtonClickedCommand}"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

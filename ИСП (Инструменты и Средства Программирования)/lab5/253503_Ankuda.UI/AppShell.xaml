@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="_253503_Ankuda.UI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:_253503_Ankuda.UI"
+    xmlns:pages="clr-namespace:_253503_Ankuda.UI.Pages"
+    >
+
+
+    <ShellContent
+         Title="Teams list"
+         ContentTemplate="{DataTemplate pages:TeamsPage}"
+         Route="Teams"/>
+    <ShellContent
+         Title="Team adding"
+         ContentTemplate="{DataTemplate pages:TeamAdding}"
+         Route="TeamAdding" />
+    <ShellContent
+         Title="Competitor adding"
+         ContentTemplate="{DataTemplate pages:CompetitorAdding}"
+         Route="CompetitorAdding" />
+
+</Shell>

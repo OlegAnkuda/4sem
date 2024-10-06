@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_253503_Ankuda.UI.Pages.TeamAdding"
+             Title="TeamAdding"
+             xmlns:models="clr-namespace:_253503_Ankuda.UI.ViewModels"
+             x:DataType="models:TeamAddingViewModel">
+    <VerticalStackLayout>
+        <Label Text="Add Team" FontSize="20" HorizontalOptions="Center" Margin="0,20,0,10" />
+
+        <Label Text="Team Name:" />
+        <Entry Text="{Binding TeamName}" />
+
+        <Label Text="Team Creator:" />
+        <Entry Text="{Binding TeamCreator}" />
+
+        <Button Text="Add Team" Command="{Binding AddButtonClickedCommand}" HorizontalOptions="Center" Margin="0,20,0,0" />
+        <Label Text="{Binding NotifyString}" HorizontalOptions="Center" TextColor="{Binding NotifyStringColor}"/>
+    </VerticalStackLayout>
+</ContentPage>

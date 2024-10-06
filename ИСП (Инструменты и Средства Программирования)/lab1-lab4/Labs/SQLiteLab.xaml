@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Labs.SQLiteLab"
+             Title="SQLite">
+    <VerticalStackLayout>
+        <StackLayout Margin="20">
+            <Label Text="Choose hospital room:" FontSize="20" />
+            <Picker x:Name="groupPicker" SelectedIndexChanged="groupPicker_SelectedIndexChanged">
+            </Picker>
+
+            <Label Text="Patients:" FontSize="20" Margin="0,10,0,0" />
+            <CollectionView x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Name}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
