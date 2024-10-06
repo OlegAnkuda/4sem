@@ -1,0 +1,60 @@
+body {
+    overflow: hidden;
+}
+
+header {
+	background-color: DeepSkyBlue;
+	padding: 5px;	
+}
+
+.logo {
+	height: 50px;
+	width: 200px;
+}
+
+.prof {
+	height: 50px;
+	width: 50px;
+	float: right;
+}
+
+.baton {
+	display: flex;
+	justify-content: center;
+}
+
+.button-poisk {
+	color: white;
+	background-color: DeepPink;
+	border: 0px;
+	border-radius: 8px; 
+	font-size: 20px;
+}
+
+main {
+	background-color: Gainsboro;	
+	padding: 5px;
+}
+
+.lenta {
+	text-align: center;
+	margin-bottom: -4px;
+}
+
+.len {
+	height: 500px;
+	width: 600px;
+}
+
+footer {
+	background-color: MidnightBlue;	
+}
+
+.pavline {
+	text-align: center;
+	margin: 0;	
+	color: white;
+}
+
+
+	
